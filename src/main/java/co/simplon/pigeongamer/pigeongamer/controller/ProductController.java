@@ -23,6 +23,12 @@ public class ProductController {
         model.addAttribute("listProducts", productService.getAllProducts());
         return "index";
     }
+    
+    @GetMapping("/dashboard")
+    public String viewDashboardPage(Model model) {
+        model.addAttribute("listProducts", productService.getAllProducts());
+        return "dashboard";
+    }
 
     @GetMapping("/showNewProductForm")
     public String showNewProductForm(Model model) {
