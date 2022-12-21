@@ -29,6 +29,9 @@ public class Product {
 	 @Column(name = "product_desc")
 	 private String product_desc;
 
+	 @Column(name = "product_cat")
+	 private String product_cat;
+	 
 	/**
 	 * @return the id_product
 	 */
@@ -112,7 +115,21 @@ public class Product {
 	public void setProduct_desc(String product_desc) {
 		this.product_desc = product_desc;
 	}
-	 
-	 
+
+	/**
+	 * @return the product_cat
+	 */
+	public String getProduct_cat() {
+		return product_cat;
+	}
+
+	/**
+	 * @param product_cat the product_cat to set
+	 */
+	public void setProduct_cat(String product_cat) {
+		this.product_cat = product_cat;
+	}
+	
+ 
 	
 }

@@ -28,13 +28,13 @@ public class ProductServicelmpl implements ProductService {
     @Override
     public Product getProductById(long id_product) {
         Optional < Product > optional = productRepository.findById(id_product);
-        Product employee = null;
+        Product product = null;
         if (optional.isPresent()) {
-            employee = optional.get();
+        	product = optional.get();
         } else {
             throw new RuntimeException(" Product not found for id :: " + id_product);
         }
-        return employee;
+        return product;
     }
 
     @Override
