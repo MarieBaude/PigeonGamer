@@ -1,10 +1,12 @@
 package co.simplon.pigeongamer.pigeongamer.repository;
 
-public class ProductRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+import co.simplon.pigeongamer.pigeongamer.model.Product;
 
-	}
+@Repository
+public interface ProductRepository extends JpaRepository <Product, Long>{
+
 
 }
