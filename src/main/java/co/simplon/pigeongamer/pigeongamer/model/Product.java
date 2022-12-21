@@ -1,10 +1,13 @@
 package co.simplon.pigeongamer.pigeongamer.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +34,9 @@ public class Product {
 
 	 @Column(name = "product_cat")
 	 private String product_cat;
+	 
+	 @ManyToMany
+	 private Set<Command> list;
 	 
 	/**
 	 * @return the id_product
@@ -129,7 +135,21 @@ public class Product {
 	public void setProduct_cat(String product_cat) {
 		this.product_cat = product_cat;
 	}
+
+	/**
+	 * @return the list
+	 */
+	public Set<Command> getList() {
+		return list;
+	}
+
+	/**
+	 * @param list the list to set
+	 */
+	public void setList(Set<Command> list) {
+		this.list = list;
+	}
 	
- 
+	
 	
 }

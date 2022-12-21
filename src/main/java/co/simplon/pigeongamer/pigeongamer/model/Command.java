@@ -2,6 +2,7 @@ package co.simplon.pigeongamer.pigeongamer.model;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,9 +27,8 @@ public class Command {
 	@Column(name = "command_delivery")
 	private LocalDate command_delivery;
 	
-	@OneToMany
-	@JoinColumn(name = "id_product")
-	private Product product;
+	@ManyToMany
+	private Set<Product> listProduct;
 
 	/**
 	 * @return the id_command
@@ -72,17 +73,17 @@ public class Command {
 	}
 
 	/**
-	 * @return the product
+	 * @return the listProduct
 	 */
-	public Product getProduct() {
-		return product;
+	public Set<Product> getListProduct() {
+		return listProduct;
 	}
 
 	/**
-	 * @param product the product to set
+	 * @param listProduct the listProduct to set
 	 */
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setListProduct(Set<Product> listProduct) {
+		this.listProduct = listProduct;
 	}
 	
 	
