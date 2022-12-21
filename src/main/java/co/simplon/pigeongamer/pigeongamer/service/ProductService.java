@@ -1,10 +1,15 @@
 package co.simplon.pigeongamer.pigeongamer.service;
 
-public class ProductService {
+import java.util.List;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+import co.simplon.pigeongamer.pigeongamer.model.Product;
 
-	}
+public interface ProductService {
+	List < Product > getAllProducts();
+    void saveProduct(Product product);
+    Product getProductById(long id);
+    void deleteProductById(long id);
+	
+
 
 }
