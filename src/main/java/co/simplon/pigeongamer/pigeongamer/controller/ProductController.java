@@ -17,44 +17,44 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
 
-    // display list of employees
+    // display list of product
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        model.addAttribute("listEmployees", productService.getAllProducts());
+        model.addAttribute("listProducts", productService.getAllProducts());
         return "index";
     }
 
-    @GetMapping("/showNewEmployeeForm")
-    public String showNewEmployeeForm(Model model) {
-        // create model attribute to bind form data
+    @GetMapping("/showNewProductForm")
+    public String showNewProductForm(Model model) {
+        // create product attribute to bind form data
     	Product product = new Product();
-        model.addAttribute("employee", product);
-        return "new_employee";
+        model.addAttribute("product", product);
+        return "new_product";
     }
 
-    @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Product product) {
-        // save employee to database
+    @PostMapping("/saveProduct")
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        // save product to database
     	productService.saveProduct(product);
         return "redirect:/";
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+    @GetMapping("/showFormForUpdate/{id_product}")
+    public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
 
         // get employee from the service
-    	Product product = productService.getProductById(id);
+    	Product product = productService.getProductById(id_product);
 
-        // set employee as a model attribute to pre-populate the form
+        // set product as a model attribute to pre-populate the form
         model.addAttribute("product", product);
-        return "update_employee";
+        return "update_product";
     }
 
-    @GetMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable(value = "id") long id) {
+    @GetMapping("/deleteProduct/{id_product}")
+    public String deleteProduct(@PathVariable(value = "id_product") long id_product) {
 
-        // call delete employee method 
-        this.productService.deleteProductById(id);
+        // call delete product method 
+        this.productService.deleteProductById(id_product);
         return "redirect:/";
     }
 	

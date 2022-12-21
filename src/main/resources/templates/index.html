@@ -23,13 +23,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="employee : ${listProduct}">
+                <tr th:each="product : ${listProducts}">
                     <td th:text="${product.product_name}"></td>
                     <td th:text="${product.product_desc}"></td>
                     <td th:text="${product.product_stock}"></td>
                     <td th:text="${product.product_price}"></td>
-                    <td> <a th:href="@{/showFormForUpdate/{id}(id=${product.id})}" class="btn btn-primary">Update</a>
-                        <a th:href="@{/deleteEmployee/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
+                    <td> <a th:href="@{/showFormForUpdate/{id_product}(id_product=${product.id_product})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{deleteProduct/{id_product}(id_product=${product.id_product})}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </tbody>

@@ -26,19 +26,19 @@ public class ProductServicelmpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(long id) {
-        Optional < Product > optional = productRepository.findById(id);
+    public Product getProductById(long id_product) {
+        Optional < Product > optional = productRepository.findById(id_product);
         Product employee = null;
         if (optional.isPresent()) {
             employee = optional.get();
         } else {
-            throw new RuntimeException(" Product not found for id :: " + id);
+            throw new RuntimeException(" Product not found for id :: " + id_product);
         }
         return employee;
     }
 
     @Override
-    public void deleteProductById(long id) {
-        this.productRepository.deleteById(id);
+    public void deleteProductById(long id_product) {
+        this.productRepository.deleteById(id_product);
     }
 }
