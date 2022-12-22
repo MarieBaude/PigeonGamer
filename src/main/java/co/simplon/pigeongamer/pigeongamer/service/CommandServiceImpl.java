@@ -36,8 +36,4 @@ public class CommandServiceImpl implements CommandService{
         return command;
     }
 
-    @Override
-    public void deleteCommandById(long id_command) {
-        this.commandRepository.deleteById(id_command);
-    }
 }

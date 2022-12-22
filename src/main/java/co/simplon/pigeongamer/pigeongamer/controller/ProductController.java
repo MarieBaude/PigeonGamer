@@ -24,12 +24,6 @@ public class ProductController {
         return "index";
     }
     
-    @GetMapping("/dashboard")
-    public String viewDashboardPage(Model model) {
-        model.addAttribute("listProducts", productService.getAllProducts());
-        return "dashboard";
-    }
-
     @GetMapping("/showNewProductForm")
     public String showNewProductForm(Model model) {
         // create product attribute to bind form data
