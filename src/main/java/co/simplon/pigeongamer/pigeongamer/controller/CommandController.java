@@ -1,6 +1,7 @@
 package co.simplon.pigeongamer.pigeongamer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,14 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
 import co.simplon.pigeongamer.pigeongamer.service.CommandService;
+
+@Controller
 public class CommandController {
 	@Autowired
     private CommandService commandService;
     
-    @GetMapping("/dashboard")
+    @GetMapping("/dashoard2")
     public String viewDashboardPage(Model model) {
-        model.addAttribute("listCommands", commandService.getAllCommands());
-        return "dashboard";
+       model.addAttribute("listCommands", commandService.getAllCommands());
+        return "dashoard2";
     }
 
     @GetMapping("/showNewCommandForm")
@@ -27,14 +30,14 @@ public class CommandController {
         return "new_product";
     }
 
-    @PostMapping("/saveProduct")
+    @PostMapping("/saveCommand")
     public String saveCommand(@ModelAttribute("command") Command command) {
         // save product to database
     	commandService.saveCommand(command);
         return "redirect:/";
     }
 
-    @GetMapping("/showFormForUpdate/{id_product}")
+    @GetMapping("/showFormForUpdateCommand/{id_command}")
     public String showFormForUpdate(@PathVariable(value = "id_command") long id_command, Model model) {
 
         // get employee from the service
@@ -42,7 +45,7 @@ public class CommandController {
 
         // set product as a model attribute to pre-populate the form
         model.addAttribute("command", command);
-        return "update_product";
+        return "update_command";
     }
 
     @GetMapping("/deleteCommand/{id_command}")

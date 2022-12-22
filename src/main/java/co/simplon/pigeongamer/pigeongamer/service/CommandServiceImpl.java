@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
 import co.simplon.pigeongamer.pigeongamer.repository.CommandRepository;
 
+@Service
 public class CommandServiceImpl implements CommandService{
 	@Autowired
 	private CommandRepository commandRepository;
@@ -29,7 +31,7 @@ public class CommandServiceImpl implements CommandService{
         if (optional.isPresent()) {
         	command = optional.get();
         } else {
-            throw new RuntimeException(" Product not found for id :: " + id_command);
+            throw new RuntimeException(" Command not found for id :: " + id_command);
         }
         return command;
     }
