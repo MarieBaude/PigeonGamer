@@ -16,6 +16,7 @@ public class ProductController {
 	 	
 	@Autowired
     private ProductService productService;
+	
 
     // display list of product
     @GetMapping("/")
