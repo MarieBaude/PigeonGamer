@@ -14,7 +14,7 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_supplier;
 	
-	@Column(name = "product_name")
+	@Column(name = "supplier_name")
 	private String supplier_name;
 	
 	public long getId_supplier() {
