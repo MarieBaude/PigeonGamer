@@ -33,6 +33,9 @@ public class Historical {
 	@ManyToOne
 	@JoinColumn(name = "id_supplier")
 	private Supplier supplier;
+	
+	@Column(name = "qte_product_supplier")
+	private int qte_product_supplier;
 
 	/**
 	 * @return the id_historical
@@ -102,6 +105,14 @@ public class Historical {
 	 */
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
+	}
+
+	public int getQte_product_supplier() {
+		return qte_product_supplier;
+	}
+
+	public void setQte_product_supplier(int qte_product_supplier) {
+		this.qte_product_supplier = qte_product_supplier;
 	}
 	
 	

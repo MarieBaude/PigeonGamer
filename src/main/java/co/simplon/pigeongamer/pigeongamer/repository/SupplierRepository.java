@@ -4,9 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import co.simplon.pigeongamer.pigeongamer.model.Product;
+import co.simplon.pigeongamer.pigeongamer.model.Supplier;
 
 @Repository
-public interface ProductRepository extends JpaRepository <Product, Long>{
+public interface SupplierRepository extends JpaRepository <Supplier, Long>{
  
 
 }

@@ -16,4 +16,20 @@ public class Supplier {
 	
 	@Column(name = "product_name")
 	private String supplier_name;
+	
+	public long getId_supplier() {
+		return id_supplier;
+	}
+
+	public void setId_supplier(long id_supplier) {
+		this.id_supplier = id_supplier;
+	}
+
+	public String getSupplier_name() {
+		return supplier_name;
+	}
+
+	public void setSupplier_name(String supplier_name) {
+		this.supplier_name = supplier_name;
+	}
 }
