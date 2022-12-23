@@ -1,6 +1,9 @@
 package co.simplon.pigeongamer.pigeongamer.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,7 @@ public class HistoricalServiceImpl implements HistoricalService {
 		return historicalRepository.findAll();
 	}
 
-	@Override
+	@Override /* NEW */
 	public void saveHistorical(Historical historical) {
 		this.historicalRepository.save(historical);
 	}

@@ -21,7 +21,7 @@ public class Product {
 	 private String product_name;
 	 
 	 @Column(name = "product_stock")
-	 private String product_stock;
+	 private int product_stock;
 	 
 	 @Column(name = "product_img")
 	 private String product_img;
@@ -69,14 +69,14 @@ public class Product {
 	/**
 	 * @return the product_stock
 	 */
-	public String getProduct_stock() {
+	public int getProduct_stock() {
 		return product_stock;
 	}
 
 	/**
 	 * @param product_stock the product_stock to set
 	 */
-	public void setProduct_stock(String product_stock) {
+	public void setProduct_stock(int product_stock) {
 		this.product_stock = product_stock;
 	}
 
