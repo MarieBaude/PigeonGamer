@@ -25,7 +25,7 @@ public class ProductController {
     @GetMapping("/")
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
-        if(session == null) {
+        if(session.getSessionUserCart(req) == null) {
 			// if not session : create session
 			session.setSession(req);
 		}
