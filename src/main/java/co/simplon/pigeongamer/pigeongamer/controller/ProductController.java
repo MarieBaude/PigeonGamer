@@ -24,10 +24,10 @@ public class ProductController {
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
         model.addAttribute("listProducts", productService.getAllProducts());
-        if(!session.isSessionCreated(req)) {
+        if(session == null) {
 			// if not session : create session
 			session.setSession(req);
-		} 
+		}
         return "index";
     }
     

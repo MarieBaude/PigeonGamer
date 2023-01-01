@@ -16,15 +16,9 @@ public class CartController {
 		System.out.println(":: list:" + session.getSessionUserCart(req));
 		System.out.println(":: req:" + req.getParameter("idProduct"));
 		
-		// Retrieve the list from the session
-		List<Integer> list = (List<Integer>) session.getSessionUserCart(req);
 		int productId = Integer.parseInt(req.getParameter("idProduct"));
+		session.updateSessionUserCart(req, productId);
 		
-		
-		if (!list.contains(productId)) {
-			System.out.println("Session déjà créer");
-			list.add(productId);
-		}
 		return "redirect:/";
 	}
 	
