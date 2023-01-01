@@ -1,32 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Pigeon Gamer</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
-<body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Pigeon Gamer</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <div class="container my-2">
-        <h1>Bienvenue sur Pigeon Gamer</h1>
-        <p>RGB Everywhere</p>
-        
-        <h2>Nos produits</h2>
-
-		<section style="display: flex; gap: 2rem;">
-	        <div class="card" style="width: 18rem;" th:each="product : ${listProducts}">
-			  <img class="card-img-top" src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" alt="Card image cap">
-			  <div class="card-body">
-			    <h3 class="card-title" th:text="${product.product_name}"></h3>
-			    <p class="card-text" th:text="${product.product_desc}"></p>
-			    <h4 th:text="${product.product_price} + €"></h4>
-			    <a href="#" class="btn btn-primary">Ajouter au panier</a>
+	
+	</head>
+	<body>
+		<nav style="display:flex; justify-content: flex-end; margin: 2rem;">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			  Panier
+			</button>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Panier</h5>
+			      </div>
+			      <div class="modal-body">
+			        ...
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+			        <button type="button" class="btn btn-primary">Valider la commande</button>
+			      </div>
+			    </div>
 			  </div>
 			</div>
-		</section>
+		</nav>
+
+	    <main class="container my-2">
+	        <h1>Bienvenue sur Pigeon Gamer</h1>
+	        <p>RGB Everywhere</p>
+	        
+	        <h2>Nos produits</h2>
+	
+			<section style="display: flex; gap: 2rem;">
+		        <article class="card" style="width: 18rem;" th:each="product : ${listProducts}">
+				  <img class="card-img-top" src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" alt="Card image cap">
+				  <div class="card-body">
+				    <h3 class="card-title" th:text="${product.product_name}"></h3>
+				    <p class="card-text" th:text="${product.product_desc}"></p>
+				    <p class="card-text" th:text="${product.product_stock}"></p>
+				    <h4 th:text="${product.product_price} + €"></h4>
+				    
+				    <button type="button" onclick="addCart('toto')" class="btn btn-primary">Ajouter au panier</button>
+				  </div>
+				</article>
+			</section>
+			
+	    </main>
+	    
+	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+	
+	<script>
+		function addCart(e){
+			console.log(e);
+			fetch('http://localhost:8080/addToCart', {
+				method: "POST",
+				body: 'test post'
+			})
+			.then((result) => {
+				console.log("res : ", result.body)
+			});
+		}
 		
-    </div>
-    
-</body>
+	</script>
 
 </html>
