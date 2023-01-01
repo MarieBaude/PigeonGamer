@@ -12,25 +12,21 @@
         <p>RGB Everywhere</p>
         
         <h2>Nos produits</h2>
+
+		<section style="display: flex; gap: 2rem;">
+	        <div class="card" style="width: 18rem;" th:each="product : ${listProducts}">
+			  <img class="card-img-top" src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" alt="Card image cap">
+			  <div class="card-body">
+			    <h3 class="card-title" th:text="${product.product_name}"></h3>
+			    <p class="card-text" th:text="${product.product_desc}"></p>
+			    <h4 th:text="${product.product_price} + €"></h4>
+			    <a href="#" class="btn btn-primary">Ajouter au panier</a>
+			  </div>
+			</div>
+		</section>
 		
-		<table border="1" class="table table-striped table-responsive-md">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="product : ${listProducts}">
-                    <td th:text="${product.product_name}"></td>
-                    <td th:text="${product.product_desc}"></td>
-                    <td th:text="${product.product_price} + €"></td>
-                </tr>
-            </tbody>
-        </table>
-        
     </div>
+    
 </body>
 
 </html>
