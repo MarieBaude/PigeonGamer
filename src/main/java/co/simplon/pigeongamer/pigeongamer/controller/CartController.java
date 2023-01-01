@@ -12,7 +12,12 @@ public class CartController {
 	public String addToCart(HttpServletRequest req) {
 		SessionCtrl session = new SessionCtrl();
 		System.out.println(":: fcvhg:" + session.getSessionUserCart(req));
-		System.out.println(":: req:" + req);
+		//System.out.println(":: req:" + req);
+		if(session.getSessionUserCart(req) == null) {
+			session.setSession(req);
+		} else {
+			System.out.println("t nul");
+		}
 		return "index";
 	}
 	
