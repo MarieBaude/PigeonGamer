@@ -1,5 +1,7 @@
 package co.simplon.pigeongamer.pigeongamer.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -11,12 +13,17 @@ public class CartController {
 	@PostMapping("/addToCart")
 	public String addToCart(HttpServletRequest req) {
 		SessionCtrl session = new SessionCtrl();
-		System.out.println(":: fcvhg:" + session.getSessionUserCart(req));
+		System.out.println(":: list:" + session.getSessionUserCart(req));
 		System.out.println(":: req:" + req.getParameter("idProduct"));
-		if(session.getSessionUserCart(req) == null) {
-			session.setSession(req);
-		} else {
-			System.out.println("t nul");
+		
+		// Retrieve the list from the session
+		List<Integer> list = (List<Integer>) session.getSessionUserCart(req);
+		int productId = Integer.parseInt(req.getParameter("idProduct"));
+		
+		
+		if (!list.contains(productId)) {
+			System.out.println("Session déjà créer");
+			list.add(productId);
 		}
 		return "redirect:/";
 	}
