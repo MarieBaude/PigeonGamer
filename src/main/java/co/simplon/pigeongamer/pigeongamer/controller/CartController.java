@@ -18,7 +18,7 @@ public class CartController {
 		} else {
 			System.out.println("t nul");
 		}
-		return "index";
+		return "redirect:/";
 	}
 	
 }
