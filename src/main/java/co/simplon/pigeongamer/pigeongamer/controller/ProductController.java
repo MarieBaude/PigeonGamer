@@ -1,5 +1,7 @@
 package co.simplon.pigeongamer.pigeongamer.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,12 @@ public class ProductController {
     @GetMapping("/")
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
-        model.addAttribute("listProducts", productService.getAllProducts());
         if(session == null) {
 			// if not session : create session
 			session.setSession(req);
 		}
+        model.addAttribute("listProducts", productService.getAllProducts());
+        model.addAttribute("cartList", (List<Integer>) session.getSessionUserCart(req));
         return "index";
     }
     
