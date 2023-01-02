@@ -25,8 +25,8 @@ public class ProductController {
     @GetMapping("/")
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
+		// if not session : create session
         if(session.getSessionUserCart(req) == null) {
-			// if not session : create session
 			session.setSession(req);
 		}
         model.addAttribute("listProducts", productService.getAllProducts());

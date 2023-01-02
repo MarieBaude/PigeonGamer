@@ -8,4 +8,5 @@ public interface CommandService {
 	List < Command > getAllCommands();
     void saveCommand(Command command);
     Command getCommandById(long id_command);
+	void saveCommand(List<Command> commandList);
 }
