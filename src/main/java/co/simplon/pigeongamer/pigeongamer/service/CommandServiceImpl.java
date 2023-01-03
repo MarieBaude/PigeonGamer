@@ -20,8 +20,8 @@ public class CommandServiceImpl implements CommandService{
     }
 	
 	 @Override
-	 public void saveCommand(List<Command> commandList) {
-		 commandRepository.saveAll(commandList);
+	 public void saveCommand(Command command) {
+		 this.commandRepository.save(command);
 	 }
 
     @Override
@@ -37,7 +37,7 @@ public class CommandServiceImpl implements CommandService{
     }
 
 	@Override
-	public void saveCommand(Command command) {
+	public void saveCommand(long id_command) {
 		// TODO Auto-generated method stub
 		
 	}
