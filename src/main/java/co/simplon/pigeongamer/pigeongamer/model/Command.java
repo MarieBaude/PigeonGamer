@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "command")
@@ -22,10 +24,8 @@ public class Command {
     private long id_command;
 	
 	@Column(name = "command_date")
+	@Temporal(TemporalType.DATE)
 	private LocalDate command_date;
-	
-	@Column(name = "command_delivery")
-	private LocalDate command_delivery;
 	
 	@ManyToMany
 	private Set<Product> listProduct;
@@ -58,19 +58,6 @@ public class Command {
 		this.command_date = command_date;
 	}
 
-	/**
-	 * @return the command_delivery
-	 */
-	public LocalDate getCommand_delivery() {
-		return command_delivery;
-	}
-
-	/**
-	 * @param command_delivery the command_delivery to set
-	 */
-	public void setCommand_delivery(LocalDate command_delivery) {
-		this.command_delivery = command_delivery;
-	}
 
 	/**
 	 * @return the listProduct

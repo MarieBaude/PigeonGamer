@@ -15,14 +15,12 @@
 	                <tr>
 	                    <th>Numéro</th>
 	                    <th>Date de commande</th>
-	                    <th>Date de livraison</th>
 	                </tr>
 	            </thead>
 	            <tbody>
 	                <tr th:each="command : ${listCommands}">
 	                    <td th:text="${command.id_command}"></td>
 	                    <td th:text="${command.command_date}"></td>
-	                    <td th:text="${command.command_delivery}"></td>
 	                </tr>
 	            </tbody>
         	</table>

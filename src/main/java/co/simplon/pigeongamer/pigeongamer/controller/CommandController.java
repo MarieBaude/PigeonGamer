@@ -23,13 +23,8 @@ public class CommandController {
        model.addAttribute("listCommands", commandService.getAllCommands());
        return "dashboard";
     }
-
+    
     @PostMapping("/new_command")
-    public void saveOrder(@RequestBody List<Long> productList) {
-      CommandService.saveCommand(productList);
-    }
-
-    @PostMapping("/saveCommand")
     public String saveCommand(@ModelAttribute("command") Command command) {
         // save command to database
     	commandService.saveCommand(command);
