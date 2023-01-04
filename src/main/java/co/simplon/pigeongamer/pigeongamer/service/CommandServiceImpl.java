@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
+import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.repository.CommandRepository;
 
 @Service
@@ -19,10 +20,20 @@ public class CommandServiceImpl implements CommandService{
 	    return commandRepository.findAll();
 	}
 	
-	@Override
-	public void saveCommand(Command command) {
-		this.commandRepository.save(command);
-	}
+//	@Override
+//	public void saveCommand(Command command) {
+//		this.commandRepository.save(command);
+//	}
+	
+	public void saveCommand(List<Long> productList) {
+	    Command command = new Command();
+	    for (Long id : productList) {
+	      Product product = new Product();
+	      product.setId_product(id);
+	      command.addProduct(product);
+	    }
+	    commandRepository.save(command);
+	  }
 	
 	@Override
 	public Command getCommandById(long id_command) {
@@ -38,6 +49,12 @@ public class CommandServiceImpl implements CommandService{
 	
 	@Override
 	public void saveCommand(long id_command) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveCommand(Command command) {
 		// TODO Auto-generated method stub
 		
 	}

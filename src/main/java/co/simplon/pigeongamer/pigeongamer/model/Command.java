@@ -85,6 +85,11 @@ public class Command {
 	public void setListProduct(Set<Product> listProduct) {
 		this.listProduct = listProduct;
 	}
+
+	public void addProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

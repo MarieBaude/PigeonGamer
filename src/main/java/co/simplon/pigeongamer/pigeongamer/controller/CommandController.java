@@ -1,11 +1,14 @@
 package co.simplon.pigeongamer.pigeongamer.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
 import co.simplon.pigeongamer.pigeongamer.service.CommandService;
@@ -21,12 +24,9 @@ public class CommandController {
        return "dashboard";
     }
 
-    @GetMapping("/showNewCommandForm")
-    public String showNewCommandForm(Model model) {
-        // create command attribute to bind form data
-    	Command command = new Command();
-        model.addAttribute("command", command);
-        return "new_command";
+    @PostMapping("/new_command")
+    public void saveOrder(@RequestBody List<Long> productList) {
+      CommandService.saveCommand(productList);
     }
 
     @PostMapping("/saveCommand")
