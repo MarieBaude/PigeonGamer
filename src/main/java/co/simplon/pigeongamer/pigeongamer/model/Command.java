@@ -24,7 +24,6 @@ public class Command {
     private long id_command;
 	
 	@Column(name = "command_date")
-	@Temporal(TemporalType.DATE)
 	private LocalDate command_date;
 	
 	@ManyToMany

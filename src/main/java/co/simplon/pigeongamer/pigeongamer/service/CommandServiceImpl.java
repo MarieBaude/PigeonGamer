@@ -1,5 +1,7 @@
 package co.simplon.pigeongamer.pigeongamer.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +22,16 @@ public class CommandServiceImpl implements CommandService{
 	    return commandRepository.findAll();
 	}
 	
-//	@Override
-//	public void saveCommand(Command command) {
-//		this.commandRepository.save(command);
-//	}
-	
+//	@Override	
 	public void saveCommand(List<Long> productList) {
 	    Command command = new Command();
+	    
+	    // date command
+	    Date date = new Date();
+		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
+		String dateFormatee = formatDate.format(date);
+	    
+		// product list
 	    for (Long id : productList) {
 	      Product product = new Product();
 	      product.setId_product(id);
