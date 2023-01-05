@@ -6,11 +6,22 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import co.simplon.pigeongamer.pigeongamer.model.Product;
+import co.simplon.pigeongamer.pigeongamer.service.ProductService;
+import co.simplon.pigeongamer.pigeongamer.service.ProductServicelmpl;
+
 public class SessionCtrl {
+	private ProductService productService;
+	
 	public void setSession(HttpServletRequest req) {
+		
+		
 		HttpSession session = req.getSession();
 		
-		List<Integer> listCart = new ArrayList<>();
+		List<Product> listCart = new ArrayList<>();
+		List<Integer> listId = new ArrayList<>();
 		
 		session.setAttribute("sessionUserCart", listCart);
 		session.setAttribute("isSessionCreated", true);
@@ -24,13 +35,16 @@ public class SessionCtrl {
 	
 	public void updateSessionUserCart(HttpServletRequest req, int productId) {
 		HttpSession session = req.getSession();
+		
+		Product product = productService.getProductById(id_product);
 
 		// Retrieve the list from the session
-		List<Integer> list = (List<Integer>) getSessionUserCart(req);
+		List<Product> listProduct = (List<Product>) getSessionUserCart(req);
+		List<Product> listId = (List<Product>) getSessionUserCart(req);
 
-		if (!list.contains(productId)) {
-			list.add(productId);
-			session.setAttribute("sessionUserCart", list);
+		if (!listId.contains(productId)) {
+			listId.add(productId);
+			session.setAttribute("sessionUserCart", listId);
 			System.out.println("Ajout dans le panier du produit " + productId);
 		} else {
 			System.out.println("Produit déjà dans le panier");
