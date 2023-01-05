@@ -2,6 +2,8 @@ package co.simplon.pigeongamer.pigeongamer.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +27,12 @@ public class CommandController {
     }
     
     @PostMapping("/new_command")
-    public String saveCommand(@ModelAttribute("command") Command command) {
+    public String saveCommand(@ModelAttribute("command") Command command, HttpServletRequest req) {
         // save command to database
-    	commandService.saveCommand(command);
+    	SessionCtrl session = new SessionCtrl();
+    	commandService.saveCommand((List<Long>) session.getSessionUserCart(req));
+    	//(List<Integer>) session.getSessionUserCart(req);
+    	//System.out.println((List<Integer>) session.getSessionUserCart(req));
         return "redirect:/";
     }
 

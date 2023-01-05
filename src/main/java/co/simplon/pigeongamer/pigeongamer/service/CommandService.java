@@ -7,7 +7,6 @@ import co.simplon.pigeongamer.pigeongamer.model.Product;
 
 public interface CommandService {
 	List < Command > getAllCommands();
-    void saveCommand(Command command);
     Command getCommandById(long id_command);
-	void saveCommand(long id_command);
-}
+    void saveCommand(List<Long> productList);
+	}
