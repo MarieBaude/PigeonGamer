@@ -4,12 +4,15 @@ package co.simplon.pigeongamer.pigeongamer.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
+import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.repository.CommandRepository;
 
 @Service
@@ -22,7 +25,7 @@ public class CommandServiceImpl implements CommandService{
 	    return commandRepository.findAll();
 	}
 	
-	//@Override	
+	/*@Override	
 	public void saveCommand(List<Product> productList) {
 		Command command = new Command();
 		// date
@@ -31,12 +34,7 @@ public class CommandServiceImpl implements CommandService{
 		
 		//command.setListProduct();
 	    
-		// product list
-	    /*for (Long id : productList) {
-	      Product product = new Product();
-	      product.setId_product(id);
-	      command.addProduct(product);
-	    }*/
+		
 		//commandRepository.save(command);
 		Command c = commandRepository.save(command);
 		//System.out.println(commandRepository.save(command));
@@ -46,7 +44,7 @@ public class CommandServiceImpl implements CommandService{
 		
 		
 	    
-	}
+	}*/
 	
 	@Override
 	public Command getCommandById(long id_command) {
@@ -58,6 +56,25 @@ public class CommandServiceImpl implements CommandService{
 	        throw new RuntimeException(" Command not found for id :: " + id_command);
 	    }
 	    return command;
+	}
+
+	@Override
+	public void saveCommand(List<Product> productList) {
+		Command command = new Command();
+		// date
+		LocalDate localDate = LocalDate.now();
+		command.setCommand_date(localDate);
+		
+		command.setListProduct( productList.stream().collect(Collectors.toSet()));
+	    
+		
+		//commandRepository.save(command);
+		Command c = commandRepository.save(command);
+		//System.out.println(commandRepository.save(command));
+		System.out.println(",,,,,,,,,,,,,,,,,,,,");
+		System.out.println(c.getId_command());
+		System.out.println(",,,,,,,,,,,,,,,,,,,,");
+		
 	}
 	
 }
