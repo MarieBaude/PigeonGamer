@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import co.simplon.pigeongamer.pigeongamer.model.Command;
+import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.service.CommandService;
 
 @Controller
@@ -30,7 +31,7 @@ public class CommandController {
     public String saveCommand(@ModelAttribute("command") Command command, HttpServletRequest req) {
         // save command to database
     	SessionCtrl session = new SessionCtrl();
-    	commandService.saveCommand((List<Long>) session.getSessionUserCart(req));
+    	commandService.saveCommand((List<Product>) session.getSessionUserCart(req));
     	//(List<Integer>) session.getSessionUserCart(req);
     	//System.out.println((List<Integer>) session.getSessionUserCart(req));
         return "redirect:/";

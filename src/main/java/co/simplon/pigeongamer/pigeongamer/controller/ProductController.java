@@ -27,10 +27,10 @@ public class ProductController {
 		SessionCtrl session = new SessionCtrl();
 		// if not session : create session
         if(session.getSessionUserCart(req) == null) {
-			session.setSession(req);
+        	session.setSession(req);
 		}
         model.addAttribute("listProducts", productService.getAllProducts());
-        model.addAttribute("cartList", (List<Integer>) session.getSessionUserCart(req));
+        model.addAttribute("cartList", (List<Product>) session.getSessionUserCart(req));
         return "index";
     }
     

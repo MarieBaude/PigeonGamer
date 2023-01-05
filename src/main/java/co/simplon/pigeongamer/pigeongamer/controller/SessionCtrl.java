@@ -13,7 +13,9 @@ import co.simplon.pigeongamer.pigeongamer.service.ProductService;
 import co.simplon.pigeongamer.pigeongamer.service.ProductServicelmpl;
 
 public class SessionCtrl {
-	private ProductService productService;
+	@Autowired
+    private ProductService productService;
+
 	
 	public void setSession(HttpServletRequest req) {
 		
@@ -21,7 +23,7 @@ public class SessionCtrl {
 		HttpSession session = req.getSession();
 		
 		List<Product> listCart = new ArrayList<>();
-		List<Integer> listId = new ArrayList<>();
+		//List<Integer> listId = new ArrayList<>();
 		
 		session.setAttribute("sessionUserCart", listCart);
 		session.setAttribute("isSessionCreated", true);
@@ -33,19 +35,28 @@ public class SessionCtrl {
 		return session.getAttribute("sessionUserCart");
 	}
 	
-	public void updateSessionUserCart(HttpServletRequest req, int productId) {
+	public void updateSessionUserCart(HttpServletRequest req, Product product) {
 		HttpSession session = req.getSession();
+		//ProductService productService = new ProductServicelmpl();
 		
-		Product product = productService.getProductById(id_product);
+		if(product == null) return;
+		
+		System.out.println("-----------AFTER----------------");			
 
 		// Retrieve the list from the session
-		List<Product> listProduct = (List<Product>) getSessionUserCart(req);
-		List<Product> listId = (List<Product>) getSessionUserCart(req);
+		List<Product> listProduct =  (List<Product>) getSessionUserCart(req);
+		List<Long> listId = new ArrayList<>();
+		
+		System.out.println("----------------------------------");			
+		System.out.println(listProduct);			
+		System.out.println("----------------------------------");
+		
+		listProduct.forEach(p -> listId.add(p.getId_product()));
 
-		if (!listId.contains(productId)) {
-			listId.add(productId);
-			session.setAttribute("sessionUserCart", listId);
-			System.out.println("Ajout dans le panier du produit " + productId);
+		if (!listId.contains(product.getId_product())) {
+			listProduct.add(product);
+			session.setAttribute("sessionUserCart", listProduct);
+			System.out.println("Ajout dans le panier du produit " + product);
 		} else {
 			System.out.println("Produit déjà dans le panier");
 		}

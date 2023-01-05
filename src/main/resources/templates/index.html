@@ -22,7 +22,7 @@
 				        <h5 class="modal-title" id="exampleModalLabel">Panier</h5>
 				      </div>
 				      <div class="modal-body" th:each="product : ${cartList}">
-				      	<h3 class="card-title" th:text="${product}"></h3>
+				      	<h3 class="card-title" th:text="${product.product_name}"></h3>
 				      </div> 
 				      	
 				      

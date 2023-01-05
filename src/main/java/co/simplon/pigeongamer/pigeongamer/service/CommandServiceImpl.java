@@ -22,14 +22,14 @@ public class CommandServiceImpl implements CommandService{
 	    return commandRepository.findAll();
 	}
 	
-//	@Override	
-	public void saveCommand(List<Long> productList) {
+	//@Override	
+	public void saveCommand(List<Product> productList) {
 		Command command = new Command();
 		// date
 		LocalDate localDate = LocalDate.now();
 		command.setCommand_date(localDate);
 		
-		command.setListProduct();
+		//command.setListProduct();
 	    
 		// product list
 	    /*for (Long id : productList) {
