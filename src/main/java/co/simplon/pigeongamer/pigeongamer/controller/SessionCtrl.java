@@ -39,9 +39,7 @@ public class SessionCtrl {
 		HttpSession session = req.getSession();
 		//ProductService productService = new ProductServicelmpl();
 		
-		if(product == null) return;
-		
-		System.out.println("-----------AFTER----------------");			
+		if(product == null) return;	
 
 		// Retrieve the list from the session
 		List<Product> listProduct =  (List<Product>) getSessionUserCart(req);
@@ -62,6 +60,15 @@ public class SessionCtrl {
 		}
 			
 		//return session.getAttribute("sessionUserCart");
+	}
+	
+	public void removeProductFromCart(HttpServletRequest req, Product product) {
+	  HttpSession session = req.getSession();
+	  List<Product> listProduct =  (List<Product>) getSessionUserCart(req);
+	  if (listProduct.contains(product)) {
+	    listProduct.remove(product);
+	    session.setAttribute("sessionUserCart", listProduct);
+	  }
 	}
 	
 	public Boolean isSessionCreated(HttpServletRequest req) {
