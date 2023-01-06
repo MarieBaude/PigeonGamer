@@ -14,11 +14,16 @@ import org.springframework.stereotype.Service;
 import co.simplon.pigeongamer.pigeongamer.model.Command;
 import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.repository.CommandRepository;
+import co.simplon.pigeongamer.pigeongamer.repository.ProductRepository;
 
 @Service
 public class CommandServiceImpl implements CommandService{
 	@Autowired
 	private CommandRepository commandRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
+
 	
 	@Override
 	public List < Command > getAllCommands() {
@@ -46,10 +51,13 @@ public class CommandServiceImpl implements CommandService{
 		
 		command.setListProduct( productList.stream().collect(Collectors.toSet()));
 	    
-		
-		//commandRepository.save(command);
+		for (Product product : productList) {
+		  int newStock = product.getProduct_stock() - 1;
+		  product.setProduct_stock(newStock);
+		  productRepository.save(product);
+		}
+
 		Command c = commandRepository.save(command);
-		//System.out.println(commandRepository.save(command));
 		System.out.println(",,,,,,,,,,,,,,,,,,,,");
 		System.out.println(c.getId_command());
 		System.out.println(",,,,,,,,,,,,,,,,,,,,");
