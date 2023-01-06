@@ -41,16 +41,5 @@ public class ProductController {
         return "supplier_product";
     }
 
-    @GetMapping("/showFormForUpdate/{id_product}")
-    public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
-
-        // get employee from the service
-    	Product product = productService.getProductById(id_product);
-
-        // set product as a model attribute to pre-populate the form
-        model.addAttribute("product", product);
-        return "update_product";
-    }
-
 	
 }

@@ -12,7 +12,7 @@ import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.service.ProductService;
 import co.simplon.pigeongamer.pigeongamer.service.ProductServicelmpl;
 
-public class SessionCtrl {
+public class SessionDashCtrl {
 	@Autowired
     private ProductService productService;
 
