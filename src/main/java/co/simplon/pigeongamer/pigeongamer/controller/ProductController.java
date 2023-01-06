@@ -21,7 +21,13 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
 
-    // list of all product
+	/**
+	 * Handles GET requests for the home page.
+	 *
+	 * @param req The HTTP request.
+	 * @param model The model for the view.
+	 * @return The name of the view template for the home page.
+	 */
     @GetMapping("/")
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
@@ -34,13 +40,25 @@ public class ProductController {
         return "index";
     }
     
-    // list of all product in dashboard
+    /**
+     * Handles GET requests for the product page.
+     *
+     * @param model The model for the view.
+     * @return The name of the view template for the product page.
+     */
     @GetMapping("/showProduct")
     public String viewDashboardPage(Model model) {
         model.addAttribute("listProducts", productService.getAllProducts());
         return "supplier_product";
     }
     
+    /**
+     * Handles GET requests to display a form for updating a product.
+     *
+     * @param id_product The ID of the product to update.
+     * @param model The model for the view.
+     * @return The name of the view template for the update form.
+     */
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
 
