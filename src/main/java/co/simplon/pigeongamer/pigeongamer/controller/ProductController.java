@@ -48,8 +48,8 @@ public class ProductController {
         Product product = productService.getProductById(id_product);
 
         // set employee as a model attribute to pre-populate the form
-        model.addAttribute("employee", product);
-        return "update_employee";
+        model.addAttribute("product", product);
+        return "update_product";
     }
 
 	
