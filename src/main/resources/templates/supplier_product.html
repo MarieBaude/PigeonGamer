@@ -26,7 +26,7 @@
 	                    <td th:text="${product.product_price} + €"></td>
 	                    <td th:text="${product.product_stock}"></td>
 	                    <td> 
-	                    	<a class="btn btn-info" th:href="@{/showFormForUpdate/{id}(id=${id_product})}">Commander</a>
+	                    	<a class="btn btn-info" th:href="@{/showFormForUpdate/{id_product}(id_product=${id_product})}">Commander</a>
 	                    </td>
 	                </tr>
 	            </tbody>
