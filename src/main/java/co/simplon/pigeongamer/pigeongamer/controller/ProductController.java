@@ -33,23 +33,6 @@ public class ProductController {
         model.addAttribute("cartList", (List<Product>) session.getSessionUserCart(req));
         return "index";
     }
-    
-    // redirect for dashboard
-    @GetMapping("/showProduct")
-    public String showNewProductForm(Model model) {
-        // create product attribute to bind form data
-    	Product product = new Product();
-        model.addAttribute("product", product);
-        return "supplier_product";
-    }
-    
-    // adding new product
-    @PostMapping("/saveProduct")
-    public String saveProduct(@ModelAttribute("product") Product product) {
-        // save product to database
-    	productService.saveProduct(product);
-        return "redirect:/";
-    }
 
     @GetMapping("/showFormForUpdate/{id_product}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
