@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Pigeon Gamer</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	</head>
 	<body>
 		<nav style="display:flex; justify-content: flex-end; margin: 2rem;">
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
 			  Panier
 			</button>
 			
@@ -39,7 +39,7 @@
 				      
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-				        <button type="submit" class="btn btn-primary">Valider la commande</button>
+				        <button type="submit" class="btn btn-info">Valider la commande</button>
 				      </div>
 				    </div>
 				  </form>
@@ -60,13 +60,13 @@
 					  <img class="card-img-top" src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" alt="Card image cap">
 					  <div class="card-body">
 					    <h3 class="card-title" th:text="${product.product_name}"></h3>
-					    <p class="card-text" th:text="${product.product_desc}"></p>
+					    <p class="card-text text-justify" th:text="${product.product_desc}"></p>
 					    <p class="card-text" th:text="${product.product_stock}"></p>
 					    <h4 th:text="${product.product_price} + €"></h4>
 					    
 					    <input type="hidden" th:value="${product.id_product}" name="idProduct" />
 					    
-					    <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+					    <button type="submit" class="btn btn-info">Ajouter au panier</button>
 					  </div>
 					</form>
 				</article>

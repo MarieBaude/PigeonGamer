@@ -21,7 +21,7 @@ public class ProductController {
 	@Autowired
     private ProductService productService;
 
-    // display list of product
+    // list of all product
     @GetMapping("/")
     public String viewHomePage(HttpServletRequest req, Model model) {
 		SessionCtrl session = new SessionCtrl();
@@ -34,14 +34,16 @@ public class ProductController {
         return "index";
     }
     
-    @GetMapping("/showNewProductForm")
+    // redirect for dashboard
+    @GetMapping("/showProduct")
     public String showNewProductForm(Model model) {
         // create product attribute to bind form data
     	Product product = new Product();
         model.addAttribute("product", product);
-        return "new_product";
+        return "supplier_product";
     }
-
+    
+    // adding new product
     @PostMapping("/saveProduct")
     public String saveProduct(@ModelAttribute("product") Product product) {
         // save product to database
