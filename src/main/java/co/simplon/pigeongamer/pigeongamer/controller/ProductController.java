@@ -33,6 +33,13 @@ public class ProductController {
         model.addAttribute("cartList", (List<Product>) session.getSessionUserCart(req));
         return "index";
     }
+    
+    // list of all product in dashboard
+    @GetMapping("/showProduct")
+    public String viewDashboardPage(Model model) {
+        model.addAttribute("listProducts", productService.getAllProducts());
+        return "supplier_product";
+    }
 
     @GetMapping("/showFormForUpdate/{id_product}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
@@ -45,12 +52,5 @@ public class ProductController {
         return "update_product";
     }
 
-    @GetMapping("/deleteProduct/{id_product}")
-    public String deleteProduct(@PathVariable(value = "id_product") long id_product) {
-
-        // call delete product method 
-        this.productService.deleteProductById(id_product);
-        return "redirect:/";
-    }
 	
 }
