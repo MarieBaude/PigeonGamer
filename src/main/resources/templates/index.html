@@ -21,7 +21,7 @@
 				        <h5 class="modal-title" id="exampleModalLabel">Panier</h5>
 				      </div>
 				      
-				      <table class="modal-body">
+				      <table class="modal-body table table-striped table-responsive-md" border="1">
 					      <thead>
 			                <tr>
 			                    <th>Nom</th>
@@ -31,7 +31,7 @@
 			            <tbody>
 			            	<tr th:each="product : ${cartList}">
 						      	<td th:text="${product.product_name}"></td>
-						      	<td th:text="${product.product_price}"></td>
+						      	<td th:text="${product.product_price} + €"></td>
 						    </tr>
 			            </tbody>
 				      </table> 
