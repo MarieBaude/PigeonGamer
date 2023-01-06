@@ -21,12 +21,25 @@ public class CommandController {
 	@Autowired
     private CommandService commandService;
     
+	/**
+	 * Handles GET requests for the dashboard page.
+	 *
+	 * @param model The model for the view.
+	 * @return The name of the view template for the dashboard page.
+	 */
     @GetMapping("/dashboard")
     public String viewDashboardPage(Model model) {
        model.addAttribute("listCommands", commandService.getAllCommands());
        return "dashboard";
     }
     
+    /**
+     * Handles POST requests to save a new command.
+     *
+     * @param command The command to save.
+     * @param req The HTTP request.
+     * @return A string indicating that the client should be redirected to the root URL.
+     */
     @PostMapping("/new_command")
     public String saveCommand(@ModelAttribute("command") Command command, HttpServletRequest req) {
         // save command to database
