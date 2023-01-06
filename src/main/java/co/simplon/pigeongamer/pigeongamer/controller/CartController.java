@@ -17,6 +17,12 @@ public class CartController {
 	@Autowired
     private ProductService productService;
 	
+	/**
+	 * Handles POST requests to add a product to the user's cart.
+	 *
+	 * @param req The HTTP request.
+	 * @return A string indicating that the client should be redirected to the root URL.
+	 */
 	@PostMapping("/addToCart")
 	public String addToCart(HttpServletRequest req) {
 		SessionCtrl session = new SessionCtrl();
