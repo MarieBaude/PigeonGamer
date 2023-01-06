@@ -59,14 +59,11 @@ public class ProductController {
      * @param model The model for the view.
      * @return The name of the view template for the update form.
      */
-    @GetMapping("/showFormForUpdate/{id}")
+    @GetMapping("/showFormForUpdate/{id_product}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
 
-        // get employee from the service
-        Product product = productService.getProductById(id_product);
-
-        // set employee as a model attribute to pre-populate the form
-        model.addAttribute("product", product);
+        //Product product = productService.getProductById(id_product);
+       // model.addAttribute("product", product);
         return "update_product";
     }
 
