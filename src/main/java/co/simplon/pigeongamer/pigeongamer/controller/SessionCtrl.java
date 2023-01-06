@@ -16,7 +16,11 @@ public class SessionCtrl {
 	@Autowired
     private ProductService productService;
 
-	
+	/**
+	 * Creates a new session for the user.
+	 *
+	 * @param req The HTTP request.
+	 */
 	public void setSession(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		
@@ -27,14 +31,25 @@ public class SessionCtrl {
 		System.out.println("Session créer");
 	}
 	
+	/**
+	 * Retrieves the user's cart from the current session.
+	 *
+	 * @param req The HTTP request.
+	 * @return The user's cart, or null if the cart does not exist in the session.
+	 */
 	public Object getSessionUserCart(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		return session.getAttribute("sessionUserCart");
 	}
 	
+	/**
+	 * Updates the user's cart in the current session by adding a product to it.
+	 *
+	 * @param req The HTTP request.
+	 * @param product The product to add to the cart.
+	 */
 	public void updateSessionUserCart(HttpServletRequest req, Product product) {
 		HttpSession session = req.getSession();
-		//ProductService productService = new ProductServicelmpl();
 		
 		if(product == null) return;	
 
@@ -55,10 +70,14 @@ public class SessionCtrl {
 		} else {
 			System.out.println("Produit déjà dans le panier");
 		}
-			
-		//return session.getAttribute("sessionUserCart");
 	}
 	
+	/**
+	 * Updates the user's cart in the current session by removing a product from it.
+	 *
+	 * @param req The HTTP request.
+	 * @param product The product to remove from the cart.
+	 */
 	public void removeProductFromCart(HttpServletRequest req, Product product) {
 	  HttpSession session = req.getSession();
 	  List<Product> listProduct =  (List<Product>) getSessionUserCart(req);
@@ -68,6 +87,12 @@ public class SessionCtrl {
 	  }
 	}
 	
+	/**
+	 * Determines whether a session has been created for the user.
+	 *
+	 * @param req The HTTP request.
+	 * @return true if a session has been created, false otherwise.
+	 */
 	public Boolean isSessionCreated(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		return (Boolean) session.getAttribute("sessionUserCart");
