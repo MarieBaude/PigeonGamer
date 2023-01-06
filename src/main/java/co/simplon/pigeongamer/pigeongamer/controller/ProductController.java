@@ -62,8 +62,8 @@ public class ProductController {
     @GetMapping("/showFormForUpdate/{id_product}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
 
-        //Product product = productService.getProductById(id_product);
-       // model.addAttribute("product", product);
+        Product product = productService.getProductById(id_product);
+        model.addAttribute("product", product);
         return "update_product";
     }
 

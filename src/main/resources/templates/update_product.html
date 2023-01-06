@@ -6,23 +6,72 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	</head>
 	<body>
-		<h1>test page de commande</h1>
+		<main class="container my-2">
+			<h1>Nouvelle commande</h1>
+			<h2>Le produit : </h2>
+			<form action="#" th:action="@{/saveProduct}" th:object="${product}" method="POST">
+	
+	            <!-- Add hidden form field to handle update -->
+	            <input type="hidden" th:field="*{id_product}" />
+	
+	            <table border="1" class="table table-striped table-responsive-md">
+		            <thead>
+		                <tr>
+		                    <th>Nom</th>
+		                    <th>Prix</th>
+		                    <th>Stock</th>
+		                </tr>
+		            </thead>
+		            	
+		            <tbody>
+		                <tr>
+		                    <td th:text="*{product_name}"></td>
+		                    <td th:text="*{product_price} + €"></td>
+		                    <td th:text="*{product_stock}"></td>
+		                </tr>
+		            </tbody>
+		        </table>
+		        <button type="submit" class="btn btn-info col-2">Commander</button>
+	        </form>
+	        <br />
+	        <a th:href="@{/showProduct}">Retour à la liste des produits</a>
+	      </main>
+	</body>
+</html> 
+
+<!--  <input type="text" th:field="*{product_stock}" class="form-control mb-4 col-4">-->
+	
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Commande</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	</head>
+	<body>
+		<h1>Nouvelle commande</h1>
 		<form action="#" th:action="@{/saveProduct}" th:object="${product}" method="POST">
 
-            <!-- Add hidden form field to handle update -->
+            <!-- Add hidden form field to handle update 
             <input type="hidden" th:field="*{id_product}" />
 
-            <input type="text" th:field="*{product_name}" class="form-control mb-4 col-4">
-
-            <input type="text" th:field="*{product_desc}" class="form-control mb-4 col-4">
-
-            <input type="text" th:field="*{product_stock}" class="form-control mb-4 col-4">
-
-            <input type="text" th:field="*{product_price}" class="form-control mb-4 col-4">
-
-            <button type="submit" class="btn btn-info col-2"> Update Product</button>
+            <div>Nom : <span th:text="*{product_name}"></span><div>
+			
+			<div>Prix : <span th:text="*{product_price}"></span><div>
+			
+			<div>Stock actuel : <span th:text="*{product_stock}"></span><div>
+            
+             <input type="text" th:field="*{product_stock}" class="form-control mb-4 col-4"
+			
+            <button type="submit" class="btn btn-info col-2">Commander</button>
+            
+            
+            
         </form>
-        
+        <br />
         <a th:href="@{/showProduct}">Retour à la liste des produits</a>
 	</body>
-</html>
+</html>-->
