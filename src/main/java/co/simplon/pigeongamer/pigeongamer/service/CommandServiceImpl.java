@@ -25,27 +25,6 @@ public class CommandServiceImpl implements CommandService{
 	    return commandRepository.findAll();
 	}
 	
-	/*@Override	
-	public void saveCommand(List<Product> productList) {
-		Command command = new Command();
-		// date
-		LocalDate localDate = LocalDate.now();
-		command.setCommand_date(localDate);
-		
-		//command.setListProduct();
-	    
-		
-		//commandRepository.save(command);
-		Command c = commandRepository.save(command);
-		//System.out.println(commandRepository.save(command));
-		System.out.println(",,,,,,,,,,,,,,,,,,,,");
-		System.out.println(c.getId_command());
-		System.out.println(",,,,,,,,,,,,,,,,,,,,");
-		
-		
-	    
-	}*/
-	
 	@Override
 	public Command getCommandById(long id_command) {
 	    Optional < Command > optional = commandRepository.findById(id_command);
