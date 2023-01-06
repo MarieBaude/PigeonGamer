@@ -24,12 +24,23 @@ public class CommandServiceImpl implements CommandService{
 	@Autowired
 	private ProductRepository productRepository;
 
-	
+	/**
+	 * Retrieves a list of all commands.
+	 *
+	 * @return A list of all commands.
+	 */
 	@Override
 	public List < Command > getAllCommands() {
 	    return commandRepository.findAll();
 	}
 	
+	/**
+	 * Retrieves the {@link Command} with the given ID from the repository.
+	 *
+	 * @param id_command the ID of the command to retrieve
+	 * @return the {@link Command} with the given ID, or {@code null} if no such command exists
+	 * @throws RuntimeException if no command is found for the given ID
+	 */
 	@Override
 	public Command getCommandById(long id_command) {
 	    Optional < Command > optional = commandRepository.findById(id_command);
@@ -42,6 +53,12 @@ public class CommandServiceImpl implements CommandService{
 	    return command;
 	}
 
+	/**
+	 * Saves a new {@link Command} to the repository, consisting of the given list of {@link Product}s.
+	 * Also updates the stock of each product by decrementing it by 1.
+	 *
+	 * @param productList the list of products to include in the command
+	 */
 	@Override
 	public void saveCommand(List<Product> productList) {
 		Command command = new Command();
