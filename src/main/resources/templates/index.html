@@ -4,6 +4,32 @@
 		<meta charset="ISO-8859-1">
 		<title>Pigeon Gamer</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<style>
+			body{
+    margin-top:20px;
+    background:#eee;
+}
+.ui-w-40 {
+    width: 40px !important;
+    height: auto;
+}
+
+.card{
+    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);    
+}
+
+.ui-product-color {
+    display: inline-block;
+    overflow: hidden;
+    margin: .144em;
+    width: .875rem;
+    height: .875rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
+    vertical-align: middle;
+}
+		</style>
 	</head>
 	<body>
 		<nav style="display:flex; justify-content: flex-end; margin: 2rem;">
@@ -15,26 +41,66 @@
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
-			  
-				  <form action="new_command" method="post">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Panier</h5>
-				      </div>
-				      <div class="modal-body" th:each="product : ${cartList}">
-				      	<h3 class="card-title" th:text="${product.product_name}"></h3>
-				      </div> 
-				      	
-				      
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-				        <button type="submit" class="btn btn-primary">Valider la commande</button>
-				      </div>
-				    </div>
-				  </form>
-				  
-			  </div>
-			</div>
+			<div class="container clearfix">
+    <!-- Shopping cart table -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Panier</h2>
+        </div>
+        	<form action="new_command" method="post">
+		        <div class="card-body">
+		            <div class="table-responsive">
+		            
+		              <table class="table table-bordered m-0">
+		                <thead>
+		                  <tr>
+		                    <!-- Set columns width -->
+		                    <th class="text-center py-3 px-4">Nom</th>
+		                    <th class="text-right py-3 px-4" >Prix</th>
+		                    <!--  <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>-->
+		                  </tr>
+		                </thead>
+		                <tbody>
+		        
+		                  <tr th:each="product : ${cartList}">
+		                    <td class="p-4">
+		                      <div class="media align-items-center">
+		                        <img src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+		                        <div class="media-body">
+		                          <a href="#" class="d-block text-dark" th:text="${product.product_name}"></a>
+		                          
+		                        </div>
+		                      </div>
+		                    </td>
+		                    <td class="text-right font-weight-semibold align-middle p-4" th:text="${product.product_price}"></td>
+		                    <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
+		                  </tr>
+		        
+		                </tbody>
+		              </table>
+		            </div>
+		            <!-- / Shopping cart table 
+		        
+		            <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+		              <div class="d-flex">
+		                <div class="text-right mt-4">
+		                  <label class="text-muted font-weight-normal m-0">Total price</label>
+		                  <div class="text-large"><strong>$1164.65</strong></div>
+		                </div>
+		              </div>
+		            </div>-->
+		        
+		            <div class="float-right py-3">
+		              <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Retour</button>
+		              <button type="submit" class="btn btn-lg btn-primary mt-2">Commander</button>
+		            </div>
+		        
+		          </div>
+          		</form>
+      </div>
+  </div>
+      </div>
+  </div>
 		</nav>
 
 	    <main class="container my-2">
@@ -69,3 +135,28 @@
 	
 	</body>
 </html>
+
+<!-- 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			  
+				  <form action="new_command" method="post">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Panier</h5>
+				      </div>
+				      <div class="modal-body" th:each="product : ${cartList}">
+				      	<h3 class="card-title" th:text="${product.product_name}"></h3>
+				      </div> 
+				      	
+				      
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+				        <button type="submit" class="btn btn-primary">Valider la commande</button>
+				      </div>
+				    </div>
+				  </form>
+				  
+			  </div>
+			</div>
+ -->
