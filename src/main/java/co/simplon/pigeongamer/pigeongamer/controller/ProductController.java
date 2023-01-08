@@ -53,15 +53,15 @@ public class ProductController {
         return "supplier_product";
     }
     
+    /**
+	 * Save a product to the database.
+	 * @param product The product to save.
+	 * @param req The HTTP request containing information about the product to save.
+	 * @return A string representing the redirect to the view of products.
+    */
     @PostMapping("/saveProduct")
     public String saveProduct(@ModelAttribute("product") Product product, HttpServletRequest req) {
     	Product productToUpdate = productService.getProductById(product.getId_product());
-    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
-    	System.out.println(product);
-    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
-    	System.out.println(productToUpdate);
-    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
-    	System.out.println(":: req:" + req.getParameter("nbProductToCommand"));
     	int num = Integer.parseInt(req.getParameter("nbProductToCommand"));
     	productService.saveProduct(productToUpdate, num);
     	
@@ -77,7 +77,6 @@ public class ProductController {
      */
     @GetMapping("/showFormForUpdate/{id_product}")
     public String showFormForUpdate(@PathVariable(value = "id_product") long id_product, Model model) {
-
         Product product = productService.getProductById(id_product);
         model.addAttribute("product", product);
         return "update_product";
