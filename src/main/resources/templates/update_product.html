@@ -33,6 +33,9 @@
 		        </table>
 		        <button type="submit" class="btn btn-info col-2">Commander</button>
 	        </form>
+	        
+	        <input type="text" th:field="*{product_stock}" class="form-control mb-4 col-4">
+	        
 	        <br />
 	        <a th:href="@{/showProduct}">Retour à la liste des produits</a>
 	      </main>
