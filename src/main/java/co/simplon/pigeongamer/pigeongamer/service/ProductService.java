@@ -20,7 +20,7 @@ public interface ProductService {
 	 *
 	 * @param product the product to save
 	 */
-    void saveProduct(Product product);
+    void saveProduct(Product product, int nbProductToCommand);
     
 	/**
 	 * Retrieves the product with the given ID.
@@ -29,8 +29,8 @@ public interface ProductService {
 	 * @return the product with the given ID, or {@code null} if no such product exists
 	 */
     Product getProductById(long id_product);
-    
-	/**
+	
+    /**
 	 * Deletes the product with the given ID.
 	 *
 	 * @param id_product the ID of the product to delete

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.simplon.pigeongamer.pigeongamer.model.Product;
 import co.simplon.pigeongamer.pigeongamer.service.ProductService;
@@ -52,6 +53,21 @@ public class ProductController {
         return "supplier_product";
     }
     
+    @PostMapping("/saveProduct")
+    public String saveProduct(@ModelAttribute("product") Product product, HttpServletRequest req) {
+    	Product productToUpdate = productService.getProductById(product.getId_product());
+    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
+    	System.out.println(product);
+    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
+    	System.out.println(productToUpdate);
+    	System.out.println(",,,,,,,,,,,,,,,,,,,,");
+    	System.out.println(":: req:" + req.getParameter("nbProductToCommand"));
+    	int num = Integer.parseInt(req.getParameter("nbProductToCommand"));
+    	productService.saveProduct(productToUpdate, num);
+    	
+        return "redirect:/showProduct";
+    }
+    
     /**
      * Handles GET requests to display a form for updating a product.
      *
@@ -66,6 +82,7 @@ public class ProductController {
         model.addAttribute("product", product);
         return "update_product";
     }
-
+    
+    
 	
 }

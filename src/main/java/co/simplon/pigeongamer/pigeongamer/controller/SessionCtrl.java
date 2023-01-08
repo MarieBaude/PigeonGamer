@@ -13,9 +13,6 @@ import co.simplon.pigeongamer.pigeongamer.service.ProductService;
 import co.simplon.pigeongamer.pigeongamer.service.ProductServicelmpl;
 
 public class SessionCtrl {
-	@Autowired
-    private ProductService productService;
-
 	/**
 	 * Creates a new session for the user.
 	 *

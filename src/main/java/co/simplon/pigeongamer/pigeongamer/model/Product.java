@@ -133,6 +133,13 @@ public class Product {
 	public void setProduct_cat(String product_cat) {
 		this.product_cat = product_cat;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id_product=" + id_product + ", product_name=" + product_name + ", product_stock="
+				+ product_stock + ", product_img=" + product_img + ", product_price=" + product_price
+				+ ", product_desc=" + product_desc + ", product_cat=" + product_cat + "]";
+	}
 	
 	
 }

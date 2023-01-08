@@ -31,8 +31,10 @@ public class ProductServicelmpl implements ProductService {
 	 * @param product the product to be saved
 	 */
     @Override
-    public void saveProduct(Product product) {
-        this.productRepository.save(product);
+    public void saveProduct(Product product, int nbProductToCommand) {
+        int newStock = product.getProduct_stock() + nbProductToCommand;
+		product.setProduct_stock(newStock);
+		this.productRepository.save(product);
     }
 
     /**
@@ -54,7 +56,7 @@ public class ProductServicelmpl implements ProductService {
         }
         return product;
     }
-
+    
     /**
      * Deletes a product from the repository by its id.
      *
